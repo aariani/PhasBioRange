@@ -36,7 +36,14 @@ shinyServer(function(input, output){
                         'Annual Mean Temperature'='temp',
                         'Altitude'='alt'
                         )
-		plotData(finalData(), vars, color)
+
+		yleg=switch(input$var,
+			'Annual Precipitation'='mm', 
+			'Annual Mean Temperature'='Celsius * 10', 
+			'Altitude'='meters'
+			)
+
+		plotData(finalData(), vars, color, input$var, yleg)
                 
 		})
 	})
