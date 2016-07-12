@@ -17,7 +17,8 @@ shinyUI(fluidPage(
 		),
 
 	mainPanel(
-		plotOutput('violinplots')
+		plotOutput('violinplots'),
+		dataTableOutput('summaryData')
 		)
 	)
 )

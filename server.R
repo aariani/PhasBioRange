@@ -45,4 +45,7 @@ shinyServer(function(input, output){
 		plotData(finalData(), vars(), color, input$var, yleg)
 		})	
 
+	output$summaryData=renderDataTable({
+		getSummary(finalData(), vars())
+		})
 	})
