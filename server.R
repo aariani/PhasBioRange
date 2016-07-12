@@ -38,7 +38,7 @@ shinyServer(function(input, output){
 
 		yleg=switch(input$var,
 			'Annual Precipitation'='mm', 
-			'Annual Mean Temperature'='Celsius * 10', 
+			'Annual Mean Temperature'='Celsius', 
 			'Altitude'='meters'
 			)
 
