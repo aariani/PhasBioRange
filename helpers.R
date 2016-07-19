@@ -9,7 +9,7 @@ processDB=function(db, pool) {
 
 
 
-plotData=function(db, var, color, t, yleg) {
+plotData=function(db, var, color, t, yleg, max) {
 ## make subset of the dataset	
 	names=c('P. vulgaris', 'P. lunatus', 'P. coccineus', 'P. dumosus', 'P. acutifolius')
 	pv=na.omit(subset(db, db$species=='vulgaris')[,var])
@@ -17,7 +17,7 @@ plotData=function(db, var, color, t, yleg) {
 	pc=na.omit(subset(db, db$species=='coccineus')[,var])
 	pd=na.omit(subset(db, db$species=='dumosus')[,var])
 	pa=na.omit(subset(db, db$species=='acutifolius')[,var])
-	vioplot(pv, pl, pc, pd, pa, names=names, col=color)#, drawRect=F)
+	vioplot(pv, pl, pc, pd, pa, names=names, col=color, ylim=c(0, max))
 	title(paste(t, '(', yleg, ')'))
 	}
 

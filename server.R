@@ -6,7 +6,6 @@ db=read.table('data/data.csv', sep='\t', header=T)
 
 shinyServer(function(input, output){
 ## Choose pool data
-
 	pool=reactive({
 		switch(input$data,
 			'All'='All', 
@@ -29,6 +28,15 @@ shinyServer(function(input, output){
 			)
 		})
 
+### Chose max
+	maxval=reactive({
+		switch(input$var,
+			'Annual Precipitation' = 7471,
+			'Annual Mean Temperature' = 29.2,
+			'Altitude' = 3310
+			)
+		})
+
 	output$violinplots=renderPlot({
 		color=switch(input$var,
 			'Annual Precipitation'='blue',
@@ -42,7 +50,7 @@ shinyServer(function(input, output){
 			'Altitude'='meters'
 			)
 
-		plotData(finalData(), vars(), color, input$var, yleg)
+		plotData(finalData(), vars(), color, input$var, yleg, maxval())
 		})	
 
 	output$summaryData=renderDataTable({
